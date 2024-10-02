@@ -10,31 +10,32 @@ function validar_preenchimento(inicio, fim, passo) {
 }
 
 function contar() {
+    // Selecionando elementos DOM e atribuindo às variáveis
     let inicio = Number.parseInt(document.getElementById("num_inicio").value); 
     let fim = Number.parseInt(document.getElementById("num_fim").value); 
     let passo = Number.parseInt(document.getElementById("num_passo").value);
     let resul = document.getElementById("exibir_resultado");   
 
+    // Validando preenchimento
     if (!validar_preenchimento(inicio, fim, passo)) {
         return;    
     } 
-
-    if (inicio >= fim) {
-        alert("Contagem impossível!")
-    }    
-    else{
-        if (passo == 0) {
-            alert("Passo inválido! Considerando Passo 1")
-            passo = 1
-        }
-        resul.innerHTML = "Contando: <br>";
-        for(let i = inicio; i < fim+1; i+=passo){
-            // console.log(i)
-            resul.innerHTML += `${i}👉🏽`; 
-        }
-        resul.innerHTML += `🏁`; 
+    // Validando numero do passo
+    if (passo == 0) {
+        alert("Passo inválido! Considerando Passo 1")
+        passo = 1
     }
-
+    // Preenchendo resultado
+    resul.innerHTML = "Contando: <br>";
+    if (inicio > fim) {
+        for(let i = inicio; i >= fim; i-=passo){            
+            resul.innerHTML += `${i}👉🏽`; 
+        }    
+    }    
+    for(let i = inicio; i < fim+1; i+=passo){        
+        resul.innerHTML += `${i}👉🏽`; 
+    }
+    resul.innerHTML += `🏁`;  
 }
 
 function main() {
