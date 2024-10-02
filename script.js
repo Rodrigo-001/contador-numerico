@@ -25,8 +25,8 @@ function contar() {
     else{
         if (passo == 0) {
             alert("Passo inválido! Considerando Passo 1")
+            passo = 1
         }
-        passo = 1
         resul.innerHTML = "Contando: <br>";
         for(let i = inicio; i < fim+1; i+=passo){
             // console.log(i)
